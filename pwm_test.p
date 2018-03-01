@@ -9,7 +9,7 @@
 #define EVENTOUT0 3
 
 START:
-  MOV r5, 20000   // Counter for main loop
+  MOV r5, 2000000   // Counter for main loop
         // Reading the memory that was set by the C program into registers
 	// r1 - Read the PWM percent high (0-100)
 	MOV	r0, 0x00000000	   //load the memory location
@@ -46,6 +46,6 @@ DELAY_LOW:
 
 	QBNE	MAINLOOP, r5, 0           // go back to main until r5 == 0
   QBEQ END, r5, 0
-  
+
 END:                               // end of program, send back interrupt
 	HALT
