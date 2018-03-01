@@ -43,7 +43,7 @@ int main (void)
        unsigned int percent = 0;
      }
      prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &percent, 4);
-     unsigned int sampletimestep = 10;  //delay factor (624 for 1600 Hz)
+     unsigned int sampletimestep = 624;  //delay factor (624 for 1600 Hz)
      // write it into the next word location in memory (i.e. 4-bytes later)
      prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &sampletimestep, 4);
      // Load and execute binary on PRU
