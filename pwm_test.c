@@ -28,6 +28,7 @@ int main (void)
 
    int on = 1;
    while (on == 1) {
+     printf("Iterating...");
      // Decremental loop
      while(init_duty_cycle > 1){
        prussdrv_init ();
@@ -74,7 +75,7 @@ int main (void)
        // Wait for event completion from PRU
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
-   }
+     }
    }
 
    // Disable PRU and close memory mappings
