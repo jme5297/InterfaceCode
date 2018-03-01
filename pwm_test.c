@@ -5,6 +5,9 @@
 
 *   Before running, please run this command: config-pin P9.27 pruout
 
+*   For compiling both files:
+    gcc pwm_test.c -o pwm_test -lpthread -lprussdrv
+    pasm -b pwm_test.p
 */
 
 #include <stdio.h>
