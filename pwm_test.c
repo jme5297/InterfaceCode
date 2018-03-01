@@ -22,12 +22,6 @@ int main (void)
   // Initialize structure used by prussdrv_pruintc_intc
   tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
 
-  prussdrv_init ();
-  prussdrv_open (PRU_EVTOUT_0);
-
-  // Map PRU intrrupts
-  prussdrv_pruintc_init(&pruss_intc_initdata);
-
 
    // duty cycle variable
    unsigned int init_duty_cycle = 100;
@@ -36,6 +30,12 @@ int main (void)
    while (1) {
    // Decremental loop
    while(init_duty_cycle > 1){
+       prussdrv_init ();
+       prussdrv_open (PRU_EVTOUT_0);
+
+       // Map PRU intrrupts
+       prussdrv_pruintc_init(&pruss_intc_initdata);
+
        init_duty_cycle = init_duty_cycle - 1;
        // write duty cycle on PRU memory
        prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &init_duty_cycle, 4);
@@ -54,6 +54,12 @@ int main (void)
 
    // Incremental loop
    while(init_duty_cycle < 100){
+       prussdrv_init ();
+       prussdrv_open (PRU_EVTOUT_0);
+
+       // Map PRU intrrupts
+       prussdrv_pruintc_init(&pruss_intc_initdata);
+
        init_duty_cycle = init_duty_cycle + 1;
        // write duty cycle on PRU memory
        prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &init_duty_cycle, 4);
