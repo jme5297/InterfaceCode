@@ -44,6 +44,6 @@ DELAY_LOW:
 
 	QBBS	END, r31.t3        // quit if button on P9_28 is pressed
 	QBA	MAINLOOP           // otherwise loop forever
-//END:                               // end of program, send back interrupt
+END:                               // end of program, send back interrupt
 //	MOV	R31.b0, PRU0_R31_VEC_VALID | EVENTOUT0
-//	HALT
+	HALT
