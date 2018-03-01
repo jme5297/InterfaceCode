@@ -74,7 +74,7 @@ int main (void)
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
      }
-
+     printf("end of cycle...\n");
    goto begin;
 
 /*
