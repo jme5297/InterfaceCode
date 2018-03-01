@@ -19,17 +19,19 @@
 
 int main (void)
 {
-  // Initialize structure used by prussdrv_pruintc_intc
-  tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
-
+   // Initialize structure used by prussdrv_pruintc_intc
+   tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
 
    // duty cycle variable
    unsigned int init_duty_cycle = 100;
    printf("PRU program will be executed, press 0 to terminate and input a new duty cycle...\n");
 
-   while (1) {
-   // Decremental loop
-   while(init_duty_cycle > 1){
+   unsigned int counter = 0;
+   while (counter > 10) {
+     counter = counter + 1;
+     printf("%d-th iteration...\n", counter);
+     // Decremental loop
+     while(init_duty_cycle > 1){
        prussdrv_init ();
        prussdrv_open (PRU_EVTOUT_0);
 
@@ -52,8 +54,8 @@ int main (void)
        //printf("PRU program completed, event number %d.\n", n);
    }
 
-   // Incremental loop
-   while(init_duty_cycle < 100){
+     // Incremental loop
+     while(init_duty_cycle < 100){
        prussdrv_init ();
        prussdrv_open (PRU_EVTOUT_0);
 
