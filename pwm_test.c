@@ -1,6 +1,8 @@
 /** Program to generate a simple PWM signal using the BBB PRUSS
 *   Output is P9_27 and input is P9_28, using PRU EGPIOs
 *   by Derek Molloy, for the book Exploring BeagleBone
+
+  Before running, please execute: config-pin P9.27 pruout
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,7 +30,7 @@ int main (void)
    prussdrv_open (PRU_EVTOUT_0);
    // Map PRU intrrupts
    prussdrv_pruintc_init(&pruss_intc_initdata);
-   percent = 50;
+   percent = 25;
    prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &percent, 4);
    unsigned int sampletimestep = 10;  //delay factor (624 for 1600 Hz)
    // write it into the next word location in memory (i.e. 4-bytes later)
