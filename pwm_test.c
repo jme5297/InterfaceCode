@@ -77,9 +77,11 @@ int main (void)
 
    goto begin;
 
+/*
    // Disable PRU and close memory mappings
    prussdrv_pru_disable(PRU_NUM);
    prussdrv_exit ();
    return EXIT_SUCCESS;
+   */
 
 }
