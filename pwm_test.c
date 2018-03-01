@@ -24,11 +24,10 @@ int main (void)
 
    // duty cycle variable
    unsigned int init_duty_cycle = 100;
-   printf("PRU program will be executed, press 0 to terminate and input a new duty cycle...\n");
+   printf("PRU program will be executed...\n");
 
-   unsigned int counter = 0;
-   while (counter > 10) {
-     counter = counter + 1;
+   bool on = true;
+   while (on) {
      printf("%d-th iteration...\n", counter);
      // Decremental loop
      while(init_duty_cycle > 1){
