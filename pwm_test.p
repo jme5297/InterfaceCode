@@ -9,7 +9,7 @@
 #define EVENTOUT0 3
 
 START:
-  MOV r5, 2000000   // Counter for main loop
+  MOV r5, 2147483000
         // Reading the memory that was set by the C program into registers
 	// r1 - Read the PWM percent high (0-100)
 	MOV	r0, 0x00000000	   //load the memory location
@@ -44,8 +44,9 @@ DELAY_LOW:
 	SUB	r4, r4, 1          // the signal was low for a step
 	QBNE	SIGNAL_LOW, r4, 0  // repeat until signal low % is done
 
-	QBNE	MAINLOOP, r5, 0           // go back to main until r5 == 0
-  QBEQ END, r5, 0
-
+  //QBBS	END, r31.t3        // quit if button on P9_28 is pressed
+  QBNE	MAINLOOP, r5, 0           // otherwise loop forever
+  
 END:                               // end of program, send back interrupt
-	HALT
+  MOV	R31.b0, PRU0_R31_VEC_VALID | EVENTOUT0
+  HALT

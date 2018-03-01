@@ -24,6 +24,28 @@ int main (void)
    unsigned int percent;
    // loop over user Input
    int counter = 0;
+   prussdrv_init ();
+   prussdrv_open (PRU_EVTOUT_0);
+   // Map PRU intrrupts
+   prussdrv_pruintc_init(&pruss_intc_initdata);
+   percent = 50;
+   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &percent, 4);
+   unsigned int sampletimestep = 10;  //delay factor (624 for 1600 Hz)
+   // write it into the next word location in memory (i.e. 4-bytes later)
+   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &sampletimestep, 4);
+   // Load and execute binary on PRU
+   prussdrv_exec_program (PRU_NUM, "./pwm_test.bin");
+   printf("PRU program executed...\n");
+   // Wait for event completion from PRU
+   int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
+   printf("PRU program completed, event number %d.\n", n);
+   // Disable PRU and close memory mappings
+   prussdrv_pru_disable(PRU_NUM);
+   prussdrv_exit ();
+   return EXIT_SUCCESS;
+
+/*
+
    while(counter < 10) {
      counter = counter + 1;
      // Allocate and initialize memory
@@ -57,5 +79,5 @@ int main (void)
      prussdrv_exit ();
      printf("PRU disabled...\n");
      //return EXIT_SUCCESS;
-   }
+   }*/
 }
