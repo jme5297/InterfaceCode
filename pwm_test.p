@@ -9,7 +9,7 @@
 #define EVENTOUT0 3
 
 START:
-  MOV r5, 200
+  MOV r5, 2000
         // Reading the memory that was set by the C program into registers
 	// r1 - Read the PWM percent high (0-100)
 	MOV	r0, 0x00000000	   //load the memory location
