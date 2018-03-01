@@ -45,6 +45,7 @@ DELAY_LOW:
 	QBNE	SIGNAL_LOW, r4, 0  // repeat until signal low % is done
 
 	QBNE	MAINLOOP, r5, 0           // go back to main until r5 == 0
-
+  QBEQ END, r5, 0
+  
 END:                               // end of program, send back interrupt
 	HALT
