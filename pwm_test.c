@@ -42,13 +42,13 @@ int main (void)
        unsigned int sampletimestep = 10;  //delay factor (10 default, 624 for 1600 Hz)
        // write it into the next word location in memory (i.e. 4-bytes later)
        prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &sampletimestep, 4);
-
        // Load and execute binary on PRU
        prussdrv_exec_program (PRU_NUM, "./pwm_test.bin");
-
+       printf("almost ending...\n")
        // Wait for event completion from PRU
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
+       printf("end completed.\n")
      }
    }
      // Incremental loop
