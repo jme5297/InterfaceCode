@@ -26,9 +26,8 @@ int main (void)
    unsigned int init_duty_cycle = 100;
    printf("PRU program will be executed...\n");
 
-   bool on = true;
-   while (on) {
-     printf("%d-th iteration...\n", counter);
+   int on = 1;
+   while (on == 1) {
      // Decremental loop
      while(init_duty_cycle > 1){
        prussdrv_init ();
