@@ -21,6 +21,7 @@ int main (void)
    tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
    // define variables for user input
    char user_input;
+   int percent;
    // loop over user Input
    int counter = 0;
    while(counter < 10) {
@@ -32,13 +33,13 @@ int main (void)
      prussdrv_pruintc_init(&pruss_intc_initdata);
      printf("Press (F) for forward, (R) for reverse, or (S) to stop: ");
      scanf("%c", &user_input);
-     if(user_input == "F") {
+     if(&user_input == "F") {
        unsigned int percent = 100;
      }
-     else if(user_input == "R") {
+     else if(&user_input == "R") {
        unsigned int percent = 50;
      }
-     else if(user_input == "S") {
+     else if(&user_input == "S") {
        unsigned int percent = 0;
      }
      prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &percent, 4);
