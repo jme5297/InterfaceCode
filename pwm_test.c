@@ -33,7 +33,7 @@ int main (void)
    unsigned int init_duty_cycle = 100;
    printf("PRU program will be executed, press 0 to terminate and input a new duty cycle...\n");
 
-   while (true) {
+   while (1) {
    // Decremental loop
    while(init_duty_cycle > 1){
        init_duty_cycle = init_duty_cycle - 1;
