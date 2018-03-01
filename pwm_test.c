@@ -43,12 +43,14 @@ int main (void)
        unsigned int percent = 0;
      }
      prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &percent, 4);
-     unsigned int sampletimestep = 624;  //delay factor (1600 Hz frequency)
+     unsigned int sampletimestep = 10;  //delay factor (1600 Hz frequency)
      // write it into the next word location in memory (i.e. 4-bytes later)
      prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &sampletimestep, 4);
      // Load and execute binary on PRU
      prussdrv_exec_program (PRU_NUM, "./pwm_test.bin");
+     printf("PRU program executed...\n");
      usleep(5e6);
+     printf("End of usleep...\n");
      // Disable PRU and close memory mappings
      prussdrv_pru_disable(PRU_NUM);
      prussdrv_exit ();
