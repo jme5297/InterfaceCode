@@ -55,6 +55,6 @@ int main (void)
      prussdrv_pru_disable(PRU_NUM);
      prussdrv_exit ();
      printf("PRU disabled...\n");
-     return EXIT_SUCCESS;
+     //return EXIT_SUCCESS;
    }
 }
