@@ -31,7 +31,6 @@ int main (void)
      while(init_duty_cycle > 1){
        prussdrv_init ();
        prussdrv_open (PRU_EVTOUT_0);
-
        // Map PRU intrrupts
        prussdrv_pruintc_init(&pruss_intc_initdata);
 
@@ -44,11 +43,11 @@ int main (void)
        prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &sampletimestep, 4);
        // Load and execute binary on PRU
        prussdrv_exec_program (PRU_NUM, "./pwm_test.bin");
-       printf("almost ending...\n")
+       printf("almost ending...\n");
        // Wait for event completion from PRU
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
-       printf("end completed.\n")
+       printf("end completed.\n");
      }
    }
      // Incremental loop
