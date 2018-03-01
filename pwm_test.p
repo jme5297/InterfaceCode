@@ -21,6 +21,8 @@ START:
 	MOV	r3, 100		   //load 100 into r3
 	SUB	r3, r3, r1	   //subtract r1 (high) away from 100
 
+
+
 MAINLOOP:
   SUB r5, r5, 1  // subtract 1 from main loop counter
 	MOV	r4, r1		   // start counter at number of steps high
