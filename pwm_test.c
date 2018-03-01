@@ -26,7 +26,7 @@ int main (void)
    unsigned int init_duty_cycle = 100;
    printf("PRU program will be executed...\n");
 
-   begin:
+     while(1) {
      // Decremental loop
      while(init_duty_cycle > 1){
        prussdrv_init ();
@@ -50,7 +50,7 @@ int main (void)
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
      }
-
+   }
      // Incremental loop
      while(init_duty_cycle < 100){
        prussdrv_init ();
@@ -74,8 +74,13 @@ int main (void)
        int n = prussdrv_pru_wait_event (PRU_EVTOUT_0);
        //printf("PRU program completed, event number %d.\n", n);
      }
-     printf("end of cycle...\n");
-   goto begin;
+
+
+
+
+
+
+
 
 /*
    // Disable PRU and close memory mappings
