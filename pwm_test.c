@@ -49,7 +49,7 @@ int main (void)
        //printf("PRU program completed, event number %d.\n", n);
        printf("end completed.\n");
      }
-     printf("=======\n");
+     init_duty_cycle = 100;
    }
      // Incremental loop
      while(init_duty_cycle < 100){
