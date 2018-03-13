@@ -33,11 +33,11 @@ int main(void) {
   ping_val = 2;
   while(1) {
     ping_val = ping_val + 1;
-    if (ping_val > 7) {
+    if (ping_val == 8) {
       ping_val = 1;
     }
-    duty_cycle = duty_cycle + 5;
-    if (duty_cycle > 100) {
+    duty_cycle = duty_cycle + 1;
+    if (duty_cycle == 100) {
       duty_cycle = 5;
     }
     prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &ping_val, 4);
