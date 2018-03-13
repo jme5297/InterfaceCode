@@ -17,8 +17,5 @@ int main (void)
   prussdrv_pruintc_init(&pruss_intc_initdata);
   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, 0, 4);
   prussdrv_exec_program (PRU_NUM, "./pwm_final.bin");
-  usleep(100000);
-  prussdrv_pru_disable(PRU_NUM);
-  prussdrv_exit ();
   return 0;
  }
