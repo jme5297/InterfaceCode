@@ -21,7 +21,7 @@ int main(void) {
   prussdrv_open (PRU_EVTOUT_0);
   prussdrv_pruintc_init(&pruss_intc_initdata);
   prussdrv_exec_program (PRU_NUM, "./pwm_final.bin");
-  int delay_period = 10;
+  int delay_period = 624;
   int ping_val = 1;
   int duty_cycle = 5;
   int mode = 1;
@@ -40,7 +40,7 @@ int main(void) {
     if (duty_cycle == 100) {
       duty_cycle = 5;
     }
-    prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &ping_val, 4);
+    //prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &ping_val, 4);
     prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &duty_cycle, 4);
     usleep(100000);
   }
