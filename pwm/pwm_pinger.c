@@ -24,7 +24,7 @@ int main(void) {
   int delay_period = 624;
   int ping_val = 1;
   int duty_cycle = 5;
-  int mode = 0;
+  int mode = 1;
   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 0, &ping_val, 4);
   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 1, &duty_cycle, 4);
   prussdrv_pru_write_memory(PRUSS0_PRU0_DATARAM, 2, &delay_period, 4);
