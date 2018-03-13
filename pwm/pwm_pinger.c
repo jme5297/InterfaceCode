@@ -16,6 +16,11 @@
 #define PRU_NUM   0
 
 int main(void) {
+  tpruss_intc_initdata pruss_intc_initdata = PRUSS_INTC_INITDATA;
+  prussdrv_init ();
+  prussdrv_open (PRU_EVTOUT_0);
+  prussdrv_pruintc_init(&pruss_intc_initdata);
+  prussdrv_exec_program (PRU_NUM, "./pwm_final.bin");
   int delay_period = 10;
   int ping_val = 1;
   int duty_cycle = 5;
