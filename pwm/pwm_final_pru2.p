@@ -1,6 +1,6 @@
 // PRUSS program to output a simple PWM signal at fixed sample rate of 100
 // Written by amc6630 on 3/11/2018
-// Output is r30.13: P8.20
+// Output is r30.8: P8.27
 
 // ============ REGISTER MAPPINGS ============
 // r0 - general register used for loading other registers or as a counter
@@ -29,7 +29,7 @@
 
 SETUP:
   MOV r5, 0              // Set MODE to IDLE (0)
-  CLR r30.t13             // Set output to low when in IDLE mode
+  CLR r30.t8             // Set output to low when in IDLE mode
 
 IDLE:
   MOV r0, 0x0000000C     // Load the memory location of MODE
@@ -53,7 +53,7 @@ START:                   // Sets up PWM loop if MODE != 0 (not in IDLE mode)
 MAINLOOP:
   // ------ HIGH cycle ------
   MOV r4, r1                  // start counter at number of steps HIGH
-  SET r30.t13                  // set output to high
+  SET r30.t8                  // set output to high
 SIGNAL_HIGH:
   MOV r0, r2                  // load r2 from above
 DELAY_HIGH:
@@ -64,7 +64,7 @@ DELAY_HIGH:
 
   // ------ LOW cycle ------
 	MOV	r4, r3		              // number of steps low loaded
-	CLR	r30.t13	                // set the output P9_27 low
+	CLR	r30.t8	                // set the output P9_27 low
 SIGNAL_LOW:
 	MOV	r0, r2		              // the delay step length - load r2 above
 DELAY_LOW:
