@@ -32,21 +32,40 @@ int main(){
 
 	if (uart0_filestream != -1)
 	{
+		int i = 0;
+		unsigned char temp[1];
     		while(1){
 
-			char temp = uart0_filestream;
+			int len = read(uart0_filestream, &temp, 1);
+/* THIS IS WORKING
+			unsigned char buf[256];
+			int len = read(uart0_filestream,(void*)buf,255);
+			if(len > 0){
 
-			int i = 0;
-			if(temp != '\n' && i < 80){
-				rx_buffer[i] = temp;
+				buf[len] = '\0';
+				printf("%s",buf);
+			}
+*/
+
+//			char temp;
+//			std::cout << uart0_filestream ;
+
+//			int i = 0;
+			
+			if(len > 0){
+			if(temp[0] != '\n' && i < 80){
+				rx_buffer[i] = temp[0];
 				i++;
+//				std::cout << temp[0];
 			}
 			else{
 				rx_buffer[i] = '\0';
 				i=0;
 				process();
-				std::cout << lat << ", " << lon << "\n";
+				std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "\n";
 			}
+			}
+	
 		}
     	}
 
@@ -62,8 +81,10 @@ data_GR(field, 0);
 if (strcmp(field, "$GPRMC") == 0){
 	data_GR(field, 3);
 		lat = strtod(field,NULL);
+		lat = lat / 100.0;
 	data_GR(field, 5);
 		lon = strtod(field,NULL);
+		lon = lon / 100.0;
 	data_GR(field, 8);
 		cog =  strtod(field,NULL);
 }
