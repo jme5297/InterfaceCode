@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include <unistd.h>			//Used for UART
 #include <fcntl.h>			//Used for UART
@@ -31,7 +32,7 @@ int main(){
 
 	if (uart0_filestream != -1)
 	{
-    while(1){
+    		while(1){
 
 			char temp = uart0_filestream;
 
@@ -44,9 +45,10 @@ int main(){
 				rx_buffer[i] = '\0';
 				i=0;
 				process();
+				std::cout << lat << ", " << lon << "\n";
 			}
-  		}
-    }
+		}
+    	}
 
 
   //----- CLOSE THE UART -----
@@ -66,6 +68,7 @@ if (strcmp(field, "$GPRMC") == 0){
 		cog =  strtod(field,NULL);
 }
 }
+
 void data_GR(char * buffer, int loc){
 int sentencePos =0;
 int fieldPos = 0;
