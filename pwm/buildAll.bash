@@ -1,9 +1,0 @@
-echo Generating PRU binaries...
-sudo pasm -b pru1.p
-sudo pasm -b pru2.p
-echo Compiling disabler code...
-sudo gcc pwm_disabler1.c -o pwm_disabler1 -lpthread -lprussdrv
-sudo gcc pwm_disabler2.c -o pwm_disabler2 -lpthread -lprussdrv
-echo Compiling testing code...
-sudo gcc frequencyTest1.c -o frequencyTest1 -lpthread -lprussdrv
-sudo gcc frequencyTest2.c -o frequencyTest2 -lpthread -lprussdrv
