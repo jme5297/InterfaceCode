@@ -14,7 +14,7 @@ inline void Detect()
 {
     int digit = -1;
     ifstream laser;
-    laser.open("/sys/class/gpio/gpio60/value");
+    laser.open("/sys/class/gpio/gpio26/value");
     
     if (laser.is_open())
     {

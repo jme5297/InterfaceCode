@@ -2,6 +2,7 @@ echo Compiling PWM code...
 cd pwm
 sudo pasm -b pru1.p
 sudo pasm -b pru2.p
+sudo g++ armESC.cpp -o armESC -lpthread -lprussdrv
 sudo gcc frequencyTest1.c -o frequencyTest1 -lpthread -lprussdrv
 sudo gcc frequencyTest2.c -o frequencyTest2 -lpthread -lprussdrv
 sudo gcc pwm_disabler1.c -o pwm_disabler1 -lpthread -lprussdrv
