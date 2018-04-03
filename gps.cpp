@@ -12,15 +12,12 @@ double lat, lon, cog;
 int main(){
 
 	int uart0_filestream = -1;
-
-
 	uart0_filestream = open("/dev/ttyO4", O_RDWR | O_NOCTTY | O_NDELAY);		//Open in non blocking read/write mode
 	if (uart0_filestream == -1)
 	{
 		//ERROR - CAN'T OPEN SERIAL PORT
 		printf("Error - Unable to open UART.  Ensure it is not in use by another application\n");
 	}
-
 	struct termios options;
 	tcgetattr(uart0_filestream, &options);
 	options.c_cflag = B9600 | CS8 | CLOCAL | CREAD;		//<Set baud rate
@@ -37,26 +34,11 @@ int main(){
     		while(1){
 
 			int len = read(uart0_filestream, &temp, 1);
-/* THIS IS WORKING
-			unsigned char buf[256];
-			int len = read(uart0_filestream,(void*)buf,255);
-			if(len > 0){
 
-				buf[len] = '\0';
-				printf("%s",buf);
-			}
-*/
-
-//			char temp;
-//			std::cout << uart0_filestream ;
-
-//			int i = 0;
-			
 			if(len > 0){
 			if(temp[0] != '\n' && i < 80){
 				rx_buffer[i] = temp[0];
 				i++;
-//				std::cout << temp[0];
 			}
 			else{
 				rx_buffer[i] = '\0';
@@ -65,13 +47,9 @@ int main(){
 				std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "\n";
 			}
 			}
-	
+
 		}
     	}
-
-
-  //----- CLOSE THE UART -----
-//	close(uart0_filestream);
 
   return 0;
 }
