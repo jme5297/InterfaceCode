@@ -5,9 +5,6 @@
 #include <pruss_intc_mapping.h>
 #define PRU_NUM0 0
 
-std::ofstream tReader;
-std::string gpio_steer;
-std::string gpio_payload;
 unsigned int dc0;
 unsigned int dp0;
 double dutyCycle_speed;
