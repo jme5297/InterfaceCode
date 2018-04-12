@@ -8,7 +8,7 @@
 unsigned char rx_buffer[80];
 void process();
 void data_GR(char * buffer, int loc);
-double lat, lon, cog;
+double lat, lon, cog, vel;
 int main(){
 
 	int uart0_filestream = -1;
@@ -44,7 +44,7 @@ int main(){
 				rx_buffer[i] = '\0';
 				i=0;
 				process();
-				std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "\n";
+				std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "," << vel*0.51444 <<  "\n";
 			}
 			}
 
@@ -65,6 +65,8 @@ if (strcmp(field, "$GPRMC") == 0){
 		lon = lon / 100.0;
 	data_GR(field, 8);
 		cog =  strtod(field,NULL);
+	data_GR(field, 7);
+		vel = strtod(field, NULL);
 }
 }
 

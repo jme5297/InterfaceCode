@@ -34,6 +34,8 @@ int main(){
 	prussdrv_exec_program(PRU_NUM0, "./pru1.bin");
   usleep(500000);
 
+// If problems arise, un-comment these two blocks.
+/*
   std::cout << "Calibrating forward...\n";
   dutyCycle_speed = 0.155;
   WriteDutyCycle(dutyCycle_speed);
@@ -43,7 +45,7 @@ int main(){
   dutyCycle_speed = 0.150;
   WriteDutyCycle(dutyCycle_speed);
   usleep(500000);
-
+*/
   std::cout << "ESC IS ARMED!\n";
   return 0;
 

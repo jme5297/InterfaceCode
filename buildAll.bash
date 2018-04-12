@@ -2,6 +2,7 @@ echo Compiling PWM code...
 cd pwm
 sudo pasm -b pru1.p
 sudo pasm -b pru2.p
+sudo g++ testSteering.cpp -o testSteering -lpthread -lprussdrv
 sudo g++ resetPayloadServo.cpp -o resetPayloadServo -lpthread -lprussdrv
 sudo g++ armESC.cpp -o armESC -lpthread -lprussdrv
 sudo gcc frequencyTest1.c -o frequencyTest1 -lpthread -lprussdrv
@@ -12,4 +13,4 @@ cd ..
 echo Compiling Interface code...
 sudo g++ gps.cpp -o gps
 sudo g++ laser.cpp -o laser
-
+sudo g++ picture.cpp -o picture
