@@ -20,7 +20,7 @@ int main(){
 	}
 	struct termios options;
 	tcgetattr(uart0_filestream, &options);
-	options.c_cflag = B9600 | CS8 | CLOCAL | CREAD;		//<Set baud rate
+	options.c_cflag = B57600 | CS8 | CLOCAL | CREAD;		//<Set baud rate
 	options.c_iflag = IGNPAR;
 	options.c_oflag = 0;
 	options.c_lflag = 0;
@@ -44,7 +44,6 @@ int main(){
 				rx_buffer[i] = '\0';
 				i=0;
 				process();
-				std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "," << vel*0.51444 <<  "\n";
 			}
 			}
 
@@ -67,6 +66,9 @@ if (strcmp(field, "$GPRMC") == 0){
 		cog =  strtod(field,NULL);
 	data_GR(field, 7);
 		vel = strtod(field, NULL);
+
+	std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "," << vel*0.51444 <<  "\n";
+
 }
 }
 
