@@ -5,11 +5,20 @@
 #include <termios.h>		//Used for UART
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
+
+using namespace std;
+
+ofstream gps_out;
+
 unsigned char rx_buffer[80];
 void process();
 void data_GR(char * buffer, int loc);
 double lat, lon, cog, vel;
+
 int main(){
+
+	gps_out.open("gps_out.csv");
 
 	int uart0_filestream = -1;
 	uart0_filestream = open("/dev/ttyO4", O_RDWR | O_NOCTTY | O_NDELAY);		//Open in non blocking read/write mode
@@ -58,16 +67,16 @@ data_GR(field, 0);
 if (strcmp(field, "$GPRMC") == 0){
 	data_GR(field, 3);
 		lat = strtod(field,NULL);
-		lat = lat / 100.0;
 	data_GR(field, 5);
 		lon = strtod(field,NULL);
-		lon = lon / 100.0;
 	data_GR(field, 8);
 		cog =  strtod(field,NULL);
 	data_GR(field, 7);
 		vel = strtod(field, NULL);
 
 	std::cout << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "," << vel*0.51444 <<  "\n";
+	gps_out << std::to_string(lat) << ", " << std::to_string(lon) << ", " << cog << "," << vel*0.51444 <<  "\n";
+
 
 }
 }

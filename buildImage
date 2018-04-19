@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Video for Beaglebone Video Applications - derekmolloy.ie"
+
+echo "Building the Video4Linux frame capture program"
+gcc -O2 -Wall `pkg-config --cflags --libs libv4l2` grabber.c -o grabber
+
+echo "Finished"

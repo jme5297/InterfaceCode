@@ -1,0 +1,27 @@
+#!/bin/bash
+
+for i in {1..5}
+do
+	echo Attempt $i ...
+
+	# Run the grabber script
+	timeout $2 ./grabber $1
+	out=$?
+
+	# Check the output
+	if [ $out -eq 124 ]; then
+		echo TIMED OUT! Sleeping 3 seconds.
+		sleep 3
+	elif [ $out -eq 19 ]; then
+		echo NO SUCH DEVICE! Sleeping 3 seconds.
+		sleep 3
+	elif [ $out -eq 0 ]; then
+		echo GOT IT!
+		break
+	else
+		echo NO IDEA! Sleeping 3 seconds.
+ 		sleep 3
+	fi
+
+	i=$[$i+1]]
+done
