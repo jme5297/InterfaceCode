@@ -5,21 +5,21 @@ do
 	echo Attempt $i ...
 
 	# Run the grabber script
-	timeout $2 ./grabber $1
+	timeout 5 ./grabber $1
 	out=$?
 
 	# Check the output
 	if [ $out -eq 124 ]; then
-		echo TIMED OUT! Sleeping 3 seconds.
+		echo 'TIMED OUT (after 5 seconds)! Sleeping 3 seconds.'
 		sleep 3
 	elif [ $out -eq 19 ]; then
-		echo NO SUCH DEVICE! Sleeping 3 seconds.
+		echo 'NO SUCH DEVICE! Sleeping 3 seconds.'
 		sleep 3
 	elif [ $out -eq 0 ]; then
-		echo GOT IT!
+		echo 'GOT IT!'
 		break
 	else
-		echo NO IDEA! Sleeping 3 seconds.
+		echo 'NO IDEA! Sleeping 3 seconds.'
  		sleep 3
 	fi
 
