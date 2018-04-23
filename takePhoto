@@ -1,7 +1,11 @@
 #!/bin/bash
 
-for i in {1..5}
+echo 'Giving camera 10 seconds to start up.'
+sleep 3
+
+for i in {1..10}
 do
+#while true; do
 	echo Attempt $i ...
 
 	# Run the grabber script

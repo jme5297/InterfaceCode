@@ -13,4 +13,3 @@ cd ..
 echo Compiling Interface code...
 sudo g++ gps.cpp -o gps
 sudo g++ laser.cpp -o laser
-sudo g++ picture.cpp -o picture

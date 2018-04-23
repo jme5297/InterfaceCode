@@ -10,7 +10,7 @@ std::string gpio_steer = "/sys/class/gpio/gpio" + std::to_string(49) + "/value";
 std::string gpio_payload = "/sys/class/gpio/gpio" + std::to_string(117) + "/value";
 unsigned int dc1;
 unsigned int dp1;
-double dutyCycle_pld = 0.023;
+double dutyCycle_pld = 0.026;
 unsigned int modeOn = 1;
 unsigned int modeOff = 0;
 
